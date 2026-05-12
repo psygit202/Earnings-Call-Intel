@@ -72,6 +72,25 @@ def _youtube_video_id(url: str) -> str:
     raise ValueError(f"Cannot extract YouTube video ID from {url}")
 
 
+def youtube_snippets(url: str) -> list:
+    """Return the raw caption snippets (with .text, .start, .duration).
+
+    Useful for streaming-style consumption — see `replay_captions`.
+    """
+    try:
+        from youtube_transcript_api import YouTubeTranscriptApi
+    except ImportError as e:
+        raise RuntimeError("youtube-transcript-api not installed") from e
+
+    vid = _youtube_video_id(url)
+    api = YouTubeTranscriptApi()
+    try:
+        fetched = api.fetch(vid, languages=["en", "en-US", "en-GB"])
+    except Exception:
+        fetched = api.fetch(vid)
+    return list(fetched)
+
+
 def from_youtube(url: str) -> str:
     try:
         from youtube_transcript_api import YouTubeTranscriptApi

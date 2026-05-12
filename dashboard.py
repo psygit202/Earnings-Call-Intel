@@ -378,8 +378,8 @@ if df_all.empty:
 # ---------------------------------------------------------------------------
 # Tabs
 # ---------------------------------------------------------------------------
-tab_overview, tab_ingest, tab_company, tab_compare, tab_digest, tab_watchlist = st.tabs(
-    ["Overview", "Ingest", "Company Deep-Dive", "Compare", "Digest", "Watchlist"]
+tab_overview, tab_live, tab_ingest, tab_company, tab_compare, tab_digest, tab_watchlist = st.tabs(
+    ["Overview", "Live Decode", "Ingest", "Company Deep-Dive", "Compare", "Digest", "Watchlist"]
 )
 
 
@@ -438,6 +438,149 @@ with tab_overview:
     display_df = df_all[["ticker", "name", "quarter", "call_date", "defensiveness_score"]].copy()
     display_df.columns = ["Ticker", "Company", "Quarter", "Call date", "Score"]
     st.dataframe(display_df, use_container_width=True, hide_index=True)
+
+
+# =============================================================================
+# LIVE DECODE — watch a YouTube earnings call and update analysis as it plays
+# =============================================================================
+with tab_live:
+    st.markdown("## Live decode")
+    st.markdown(
+        "<div class='subtle'>Watch an earnings call &mdash; metrics update as the captions stream</div>",
+        unsafe_allow_html=True,
+    )
+
+    live_col_input, live_col_speed = st.columns([3, 1])
+    with live_col_input:
+        live_url = st.text_input(
+            "YouTube URL",
+            value="https://www.youtube.com/watch?v=xoCrPnI-o6s",
+            help="Default: Tesla Q1 2024 earnings call",
+            key="live_url",
+        )
+    with live_col_speed:
+        live_speed = st.select_slider(
+            "Replay speed", options=["1x", "5x", "10x", "20x", "50x"], value="20x", key="live_speed",
+        )
+
+    start_col, info_col = st.columns([1, 4])
+    with start_col:
+        live_start = st.button("Start live decode", type="primary", use_container_width=True)
+    with info_col:
+        st.markdown(
+            "<div style='font-size:9pt;color:#555;padding-top:6px'>"
+            "Replays captions in chunks at the chosen speed. The embedded video plays at its native pace; "
+            "the analysis stream is independent and intentionally faster so you can see the metrics build."
+            "</div>",
+            unsafe_allow_html=True,
+        )
+
+    # Persistent slots so values survive reruns
+    video_slot = st.empty()
+    progress_slot = st.empty()
+    metric_row = st.empty()
+    chart_row = st.empty()
+    transcript_slot = st.empty()
+
+    if live_start and live_url:
+        try:
+            with st.spinner("Loading captions from YouTube..."):
+                snippets = fetch_transcripts.youtube_snippets(live_url)
+        except Exception as e:
+            st.error(f"Could not load captions: {e}")
+            snippets = []
+
+        if snippets:
+            video_slot.video(live_url)
+            speed_map = {"1x": 1, "5x": 5, "10x": 10, "20x": 20, "50x": 50}
+            speed = speed_map[live_speed]
+
+            # Chunk size: replay in steady-time slices for smooth UI updates
+            total_duration = float(getattr(snippets[-1], "start", 0)) + float(getattr(snippets[-1], "duration", 0))
+            chunk_seconds = max(10.0, total_duration / 30)  # ~30 updates over the whole call
+            ui_pause = chunk_seconds / speed                # wall-clock seconds between updates
+
+            accumulated: list[str] = []
+            cur_chunk_end = chunk_seconds
+            score_history: list[tuple[float, float]] = []
+            hedge_history: list[tuple[float, float]] = []
+            cert_history: list[tuple[float, float]] = []
+
+            import time as _time
+
+            def _flush(at_time: float, force: bool = False) -> None:
+                full = " ".join(accumulated)
+                if not full.strip():
+                    return
+                parsed = parse_transcript.parse(full)
+                report = linguistic_analyzer.analyze(parsed)
+                score = linguistic_analyzer.defensiveness_score(report)
+                score_history.append((at_time, score))
+                hedge_history.append((at_time, report.hedging.total_per_1000))
+                cert_history.append((at_time, report.certainty.per_1000_words))
+
+                with metric_row.container():
+                    m1, m2, m3, m4 = st.columns(4)
+                    m1.metric("Defensiveness", f"{score:.1f}")
+                    m2.metric("Hedging /1k", f"{report.hedging.total_per_1000:.1f}")
+                    m3.metric("Defensive /1k", f"{report.defensive.total_per_1000:.1f}")
+                    m4.metric("Certainty /1k", f"{report.certainty.per_1000_words:.1f}")
+
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=[t for t, _ in score_history], y=[v for _, v in score_history],
+                    mode="lines+markers", name="Defensiveness",
+                    line=dict(color=PALETTE["red"], width=2.5),
+                    marker=dict(size=6, color=PALETTE["red"], line=dict(color=PALETTE["ink"], width=1)),
+                ))
+                fig.add_trace(go.Scatter(
+                    x=[t for t, _ in hedge_history], y=[v for _, v in hedge_history],
+                    mode="lines+markers", name="Hedging /1k",
+                    line=dict(color=PALETTE["ochre"], width=2, dash="dot"),
+                    marker=dict(size=5),
+                ))
+                fig.add_trace(go.Scatter(
+                    x=[t for t, _ in cert_history], y=[v for _, v in cert_history],
+                    mode="lines+markers", name="Certainty /1k",
+                    line=dict(color=PALETTE["ink"], width=2, dash="dash"),
+                    marker=dict(size=5),
+                ))
+                fig.update_layout(
+                    paper_bgcolor=PALETTE["cream"], plot_bgcolor=PALETTE["cream"],
+                    xaxis=dict(title="Seconds into call", color=PALETTE["ink"], gridcolor="#c4b89e"),
+                    yaxis=dict(title="Value", color=PALETTE["ink"], gridcolor="#c4b89e"),
+                    font=dict(family="Georgia, serif", color=PALETTE["ink"]),
+                    height=320, margin=dict(l=50, r=20, t=20, b=50),
+                    legend=dict(bgcolor=PALETTE["cream"], bordercolor=PALETTE["ink"], borderwidth=1),
+                )
+                chart_row.plotly_chart(fig, use_container_width=True, key=f"live_chart_{at_time}")
+
+                # Recent text — highlight markers in the most recent chunk
+                recent = " ".join(accumulated[-200:])
+                transcript_slot.markdown(
+                    f"<div class='transcript-box' style='max-height:200px'>{highlight_text(recent)}</div>",
+                    unsafe_allow_html=True,
+                )
+
+            for i, s in enumerate(snippets):
+                text = getattr(s, "text", None) or s["text"]
+                start = float(getattr(s, "start", None) if getattr(s, "start", None) is not None else s["start"])
+                accumulated.append(text.replace("\n", " ").strip())
+
+                if start >= cur_chunk_end or i == len(snippets) - 1:
+                    progress_slot.progress(
+                        min(1.0, start / max(total_duration, 1)),
+                        text=f"Decoded {start:.0f}s / {total_duration:.0f}s of call  ({len(accumulated)} caption chunks)",
+                    )
+                    _flush(start, force=(i == len(snippets) - 1))
+                    cur_chunk_end += chunk_seconds
+                    _time.sleep(ui_pause)
+
+            progress_slot.progress(1.0, text=f"Done. Decoded full call ({total_duration:.0f}s).")
+            st.success(
+                f"Live decode complete. Final score: {score_history[-1][1]:.1f}. "
+                "Use the **Ingest** tab to persist this transcript for QoQ comparison."
+            )
 
 
 # =============================================================================
