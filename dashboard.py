@@ -451,10 +451,15 @@ with tab_ingest:
         "Source",
         ["Upload file (.txt or .pdf)", "Paste text", "URL (web page)", "YouTube URL"],
         horizontal=True, label_visibility="collapsed",
+        key="ingest_mode",
     )
 
-    raw_text = ""
-    source_label = ""
+    # Persist fetched text across reruns — Streamlit reruns on every widget event,
+    # and local variables don't survive that. Session state does.
+    if st.session_state.get("ingest_mode_prev") != mode:
+        st.session_state.pop("raw_text", None)
+        st.session_state.pop("source_label", None)
+        st.session_state["ingest_mode_prev"] = mode
 
     if mode == "Upload file (.txt or .pdf)":
         uploaded = st.file_uploader("Select a transcript file", type=["txt", "pdf"])
@@ -463,26 +468,27 @@ with tab_ingest:
                 try:
                     from pypdf import PdfReader
                     reader = PdfReader(io.BytesIO(uploaded.read()))
-                    raw_text = "\n".join((p.extract_text() or "") for p in reader.pages)
+                    st.session_state["raw_text"] = "\n".join((p.extract_text() or "") for p in reader.pages)
                 except ImportError:
                     st.error("pypdf is not installed. Run `pip install pypdf` to ingest PDFs.")
             else:
-                raw_text = uploaded.read().decode("utf-8", errors="replace")
-            source_label = f"file:{uploaded.name}"
+                st.session_state["raw_text"] = uploaded.read().decode("utf-8", errors="replace")
+            st.session_state["source_label"] = f"file:{uploaded.name}"
 
     elif mode == "Paste text":
-        raw_text = st.text_area("Paste transcript", height=320, placeholder="Paste the full transcript here...")
-        if raw_text:
-            source_label = "manual"
+        pasted = st.text_area("Paste transcript", height=320, placeholder="Paste the full transcript here...")
+        if pasted:
+            st.session_state["raw_text"] = pasted
+            st.session_state["source_label"] = "manual"
 
     elif mode == "URL (web page)":
         url = st.text_input("URL", placeholder="https://investor.example.com/q1-2026-transcript")
         if url and st.button("Fetch URL"):
             with st.spinner(f"Fetching {url}..."):
                 try:
-                    raw_text = fetch_transcripts.from_url(url)
-                    source_label = f"url:{url}"
-                    st.success(f"Fetched {len(raw_text):,} characters.")
+                    st.session_state["raw_text"] = fetch_transcripts.from_url(url)
+                    st.session_state["source_label"] = f"url:{url}"
+                    st.success(f"Fetched {len(st.session_state['raw_text']):,} characters.")
                 except Exception as e:
                     st.error(f"Fetch failed: {e}")
 
@@ -491,11 +497,14 @@ with tab_ingest:
         if url and st.button("Pull captions"):
             with st.spinner("Pulling YouTube auto-captions..."):
                 try:
-                    raw_text = fetch_transcripts.from_youtube(url)
-                    source_label = f"youtube:{url}"
-                    st.success(f"Got {len(raw_text):,} characters of captions.")
+                    st.session_state["raw_text"] = fetch_transcripts.from_youtube(url)
+                    st.session_state["source_label"] = f"youtube:{url}"
+                    st.success(f"Got {len(st.session_state['raw_text']):,} characters of captions.")
                 except Exception as e:
                     st.error(f"YouTube fetch failed: {e}")
+
+    raw_text = st.session_state.get("raw_text", "")
+    source_label = st.session_state.get("source_label", "")
 
     if raw_text:
         st.markdown("### Preview & metadata")
@@ -550,6 +559,9 @@ with tab_ingest:
                             claude_payload["guidance"] = guidance.model_dump()
                     storage.save_analysis(tid, report.model_dump(), score, claude_payload or None)
                     clear_caches()
+                # Clear the fetched text so a fresh ingest starts clean next time
+                st.session_state.pop("raw_text", None)
+                st.session_state.pop("source_label", None)
                 st.success(f"{ticker} {quarter} ingested. Defensiveness score: **{score:.1f}**")
                 st.balloons()
 

@@ -79,25 +79,26 @@ def from_youtube(url: str) -> str:
         raise RuntimeError("youtube-transcript-api not installed") from e
 
     vid = _youtube_video_id(url)
-    # Prefer English; fall back to first available
-    try:
-        chunks = YouTubeTranscriptApi.get_transcript(vid, languages=["en", "en-US", "en-GB"])
-    except Exception:
-        chunks = YouTubeTranscriptApi.get_transcript(vid)
+    api = YouTubeTranscriptApi()
 
-    # YouTube auto-captions arrive as a stream of short fragments with no
-    # speaker labels. Join into sentences for downstream heuristics.
-    text = " ".join(c["text"].replace("\n", " ").strip() for c in chunks)
-    # Try to insert paragraph breaks at long pauses (estimated by gaps in
-    # timestamps).
+    # v1.x: fetch returns a FetchedTranscript that iterates FetchedTranscriptSnippet
+    try:
+        fetched = api.fetch(vid, languages=["en", "en-US", "en-GB"])
+    except Exception:
+        fetched = api.fetch(vid)
+
+    snippets = list(fetched)
     rebuilt: list[str] = []
     last_end = 0.0
-    for c in chunks:
-        start = float(c.get("start", 0))
+    for s in snippets:
+        # Snippets have .text, .start, .duration attributes (or dict keys depending on version)
+        text = getattr(s, "text", None) or s["text"]
+        start = float(getattr(s, "start", None) if getattr(s, "start", None) is not None else s["start"])
+        dur = float(getattr(s, "duration", None) if getattr(s, "duration", None) is not None else s.get("duration", 0))
         if start - last_end > 3.0 and rebuilt:
             rebuilt.append("\n")
-        rebuilt.append(c["text"].replace("\n", " ").strip())
-        last_end = start + float(c.get("duration", 0))
+        rebuilt.append(text.replace("\n", " ").strip())
+        last_end = start + dur
     return " ".join(rebuilt).replace(" \n ", "\n\n")
 
 

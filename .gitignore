@@ -56,7 +56,11 @@ ENV/
 Thumbs.db
 Desktop.ini
 
+# Intermediate frames used to stitch the demo GIF — only the final .gif is committed
+docs/screenshots/_gif_frames/
+
 # Keep these explicitly
 !tests/fixtures/sample_*.txt
 !.streamlit/config.toml
 !docs/screenshots/*.png
+!docs/screenshots/*.gif
