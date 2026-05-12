@@ -1,0 +1,233 @@
+# Linguistic markers used by linguistic_analyzer.py.
+# All matching is case-insensitive, word-boundary aware.
+# Multi-word entries are matched as phrases.
+
+# ---------------------------------------------------------------------------
+# HEDGING WORDS — soften commitment, signal uncertainty
+# ---------------------------------------------------------------------------
+hedging:
+  epistemic:
+    - believe
+    - think
+    - feel
+    - expect
+    - anticipate
+    - assume
+    - suppose
+    - presume
+    - imagine
+    - suspect
+    - guess
+    - reckon
+    - figure
+  probability:
+    - might
+    - may
+    - could
+    - should
+    - possibly
+    - perhaps
+    - likely
+    - probably
+    - potentially
+    - conceivably
+    - arguably
+    - presumably
+  approximation:
+    - about
+    - around
+    - roughly
+    - approximately
+    - somewhere
+    - somewhat
+    - kind of
+    - sort of
+    - more or less
+    - ballpark
+    - give or take
+    - in the range of
+    - in the neighborhood of
+  conditional:
+    - if
+    - unless
+    - provided that
+    - depending on
+    - assuming
+    - subject to
+    - contingent on
+    - in the event
+    - should we
+    - were we to
+
+# ---------------------------------------------------------------------------
+# DEFENSIVE PHRASES — verbal tells of management under pressure
+# ---------------------------------------------------------------------------
+defensive_phrases:
+  reframing:
+    - as I mentioned earlier
+    - as I said before
+    - as we said
+    - to be clear
+    - to be very clear
+    - to be perfectly clear
+    - to be honest
+    - what I would say is
+    - what I would tell you is
+    - the way I think about it
+    - the way to think about it
+    - the right way to look at this
+    - let me be clear
+    - let me reframe
+    - let me push back
+    - let me address that
+  attention_grabbing:
+    - look
+    - listen
+    - hey
+    - so look
+    - here's the thing
+    - the reality is
+    - the fact is
+    - the truth is
+    - at the end of the day
+    - bottom line
+  compliments:
+    - that's a great question
+    - that's a fair question
+    - great question
+    - good question
+    - thanks for the question
+    - I appreciate the question
+    - I'm glad you asked
+  non_answers:
+    - we don't comment on
+    - we don't disclose
+    - we don't break out
+    - we don't guide to
+    - we don't provide guidance on
+    - we'll address that
+    - we'll come back to that
+    - we'll follow up
+    - I'll take that offline
+    - not something we discuss
+    - not appropriate to comment
+    - too early to say
+    - too early to tell
+    - we're not going to speculate
+    - I can't speak to
+    - I'm not going to get into
+    - I'm not in a position to
+
+# ---------------------------------------------------------------------------
+# CERTAINTY MARKERS — confident, declarative language (positive signal)
+# ---------------------------------------------------------------------------
+certainty:
+  absolutes:
+    - definitely
+    - absolutely
+    - certainly
+    - undoubtedly
+    - unquestionably
+    - clearly
+    - obviously
+    - plainly
+    - evidently
+    - without question
+    - without a doubt
+    - no question
+  commitment:
+    - committed to
+    - confident in
+    - confident that
+    - well-positioned
+    - well positioned
+    - on track
+    - on schedule
+    - executing well
+    - delivering on
+    - delivered on
+    - exceeded
+    - outperformed
+    - record
+    - all-time high
+    - strongest ever
+  factual:
+    - the data shows
+    - the numbers show
+    - we know that
+    - we've proven
+    - demonstrated
+    - validated
+
+# ---------------------------------------------------------------------------
+# EVASION SIGNALS — Q&A-specific deflection patterns
+# ---------------------------------------------------------------------------
+evasion:
+  handoffs:
+    - I'll let
+    - let me hand
+    - I'll pass
+    - over to
+    - maybe
+    - perhaps
+  topic_pivots:
+    - but more importantly
+    - what's more important
+    - the bigger picture
+    - zooming out
+    - stepping back
+    - the broader context
+    - let's not lose sight of
+  deferrals:
+    - we'll talk about that
+    - more to come
+    - stay tuned
+    - we'll share more
+    - in due course
+    - at the appropriate time
+
+# ---------------------------------------------------------------------------
+# PRONOUNS — for ownership / deflection analysis
+# ---------------------------------------------------------------------------
+pronouns:
+  first_person_singular:
+    - I
+    - me
+    - my
+    - mine
+    - myself
+  first_person_plural:
+    - we
+    - us
+    - our
+    - ours
+    - ourselves
+  third_person:
+    - they
+    - them
+    - their
+    - theirs
+    - the team
+    - the company
+    - the organization
+
+# ---------------------------------------------------------------------------
+# NEGATION CLUSTERS — concentration of "not", "no", "never" near key metrics
+# ---------------------------------------------------------------------------
+negation:
+  - not
+  - no
+  - never
+  - none
+  - neither
+  - nor
+  - cannot
+  - won't
+  - can't
+  - didn't
+  - wasn't
+  - weren't
+  - haven't
+  - hasn't
+  - don't
+  - doesn't

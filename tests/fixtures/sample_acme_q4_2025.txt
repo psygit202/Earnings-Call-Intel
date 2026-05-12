@@ -1,0 +1,53 @@
+ACME Corporation (NASDAQ: ACME) Q4 2025 Earnings Call
+
+February 5, 2026
+
+Operator: Good afternoon, and welcome to the Acme Corporation fourth quarter 2025 earnings conference call. At this time, all participants are in a listen-only mode. After the speakers' presentation, there will be a question-and-answer session. I would now like to hand the conference over to Sarah Mitchell, Vice President of Investor Relations.
+
+Sarah Mitchell - VP, Investor Relations: Thank you, operator. Good afternoon and welcome to Acme's fourth quarter 2025 earnings call. Joining me today are David Chen, our Chief Executive Officer, and Robert Anderson, our Chief Financial Officer. Before we begin, I would like to remind everyone that today's discussion contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act. These statements are based on management's current expectations and are subject to risks and uncertainties that could cause actual results to differ materially. Please refer to our SEC filings for a full discussion of these risks. With that, I'll turn the call over to David.
+
+David Chen - Chief Executive Officer: Thanks, Sarah, and good afternoon, everyone. I'm pleased to report that Acme delivered an exceptional fourth quarter, capping off a record year. Revenue grew 28 percent year-over-year to 1.4 billion dollars, exceeding the high end of our guidance. Our cloud platform business expanded 47 percent, and we exited the year with 220 million dollars in annualized recurring revenue from that segment alone. We are committed to maintaining this growth trajectory through 2026.
+
+This quarter validates the strategy we laid out three years ago. We invested heavily in our cloud infrastructure when others were pulling back. That investment is now paying dividends. We are well positioned to capture the next wave of enterprise migration. Our customer count grew to over 4,200, up from 3,100 a year ago, and our net revenue retention came in at 128 percent. These are not modest numbers. The data shows clear, sustained momentum across every business unit.
+
+Let me be specific about what is working. First, our enterprise sales motion is delivering. We closed 47 deals over one million dollars this quarter, up from 22 a year ago. Second, our product velocity has accelerated. We shipped 14 major features in Q4, including the launch of Acme Insight, which has already been adopted by 600 customers. Third, our gross margins expanded 320 basis points to 76 percent, demonstrating the operating leverage we have always promised.
+
+Looking ahead, we expect full-year 2026 revenue between 6.1 billion and 6.3 billion dollars, representing 24 to 28 percent growth. We are confident in this range. We have line of sight to the pipeline, our renewal rates are strong, and we are seeing no slowdown in enterprise demand. With that, I'll hand it to Robert.
+
+Robert Anderson - Chief Financial Officer: Thanks, David. Q4 revenue was 1.4 billion dollars, up 28 percent year-over-year. Gross margin was 76 percent. Operating margin reached 19 percent, an all-time high. Free cash flow for the quarter was 312 million dollars, bringing full-year free cash flow to 1.05 billion. We exited the year with 3.2 billion in cash and no debt.
+
+Our balance sheet has never been stronger. We executed on our 500 million dollar buyback program in 2025 and the board has authorized an additional 1 billion for 2026. We will be opportunistic. We have demonstrated capital discipline through every market environment.
+
+For Q1 2026, we expect revenue of 1.45 to 1.48 billion dollars, gross margin around 76 percent, and operating margin between 18 and 19 percent. We are confident in this guidance based on the bookings we entered the quarter with. With that, operator, we are ready to take questions.
+
+Operator: Thank you. Our first question comes from Jennifer Walsh of Morgan Stanley.
+
+Jennifer Walsh - Morgan Stanley: Hi, thanks for taking my question. Congratulations on the quarter. Can you talk about what you are seeing in terms of customer expansion within the cloud platform business?
+
+David Chen - Chief Executive Officer: Sure, Jennifer. We are seeing strong expansion. Our net revenue retention in the cloud platform specifically is 134 percent, which means existing customers are expanding their spend with us by 34 percent on average. The drivers are clear: customers start with one workload, see the value, and migrate additional workloads. We have a defined playbook for this and we are executing it consistently. Five of our top ten customers have at least doubled their spend with us in the past 18 months.
+
+Operator: Our next question comes from Michael Tran of Goldman Sachs.
+
+Michael Tran - Goldman Sachs: Thanks. David, can you give us a sense of the competitive environment and whether you are seeing any pricing pressure?
+
+David Chen - Chief Executive Officer: Michael, we are not seeing pricing pressure. Our discounting rates are flat year-over-year. We win on capability and time-to-value, not on price. When we lose deals, it is usually because the customer chose to defer a decision, not because they went with a competitor on price. We have proven this dynamic across hundreds of deals.
+
+Operator: Our next question comes from Priya Patel of JPMorgan.
+
+Priya Patel - JPMorgan: Thank you. Robert, on the operating margin expansion, how much further can this go? What is the long-term target?
+
+Robert Anderson - Chief Financial Officer: Priya, we have line of sight to 25 percent operating margin by 2028. That is our committed target. The drivers are scale in sales and marketing, automation in our customer success function, and ongoing efficiency in our cloud infrastructure costs. We have already proven we can expand margins while investing in growth. We will continue to do so.
+
+Operator: Our next question comes from Tom Becker of Barclays.
+
+Tom Becker - Barclays: Hi, congratulations again. On Acme Insight, what kind of ARR contribution do you expect in 2026?
+
+David Chen - Chief Executive Officer: Tom, we are not breaking out Insight ARR separately yet because we want at least four quarters of data. What I will tell you is that adoption is exceeding our internal model. We modeled 400 customers by end of Q1; we hit 600 in Q4 alone. We will share specific Insight numbers when we report Q2.
+
+Operator: Our final question comes from Lisa Ramirez of Bank of America.
+
+Lisa Ramirez - Bank of America: Thanks. David, looking at 2026, what gives you confidence in the 24 to 28 percent growth range?
+
+David Chen - Chief Executive Officer: Lisa, three things. One, our backlog. We entered Q1 with 4.8 billion dollars in remaining performance obligations, up 34 percent year-over-year. Two, our pipeline coverage. We have 3.5x pipeline coverage on our Q1 plan, which is the highest we have ever had. Three, the macro signals we hear from customers. CIO budgets are growing, and digital transformation is a non-negotiable priority. Combine those three and the guidance range is, frankly, conservative.
+
+Operator: That concludes today's call. Thank you for participating.

@@ -1,0 +1,63 @@
+ACME Corporation (NASDAQ: ACME) Q1 2026 Earnings Call
+
+May 7, 2026
+
+Operator: Good afternoon, and welcome to the Acme Corporation first quarter 2026 earnings conference call. At this time, all participants are in a listen-only mode. After the speakers' presentation, there will be a question-and-answer session. I would now like to hand the conference over to Sarah Mitchell, Vice President of Investor Relations.
+
+Sarah Mitchell - VP, Investor Relations: Thank you, operator. Good afternoon. Joining me today are David Chen, our CEO, and Robert Anderson, our CFO. Before we begin, I would like to remind everyone that today's discussion contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act. These statements are subject to risks and uncertainties. With that, I'll turn the call over to David.
+
+David Chen - Chief Executive Officer: Thanks, Sarah. Look, I want to be clear about what we are seeing. The first quarter played out somewhat differently than we anticipated. Revenue came in at 1.42 billion dollars, which was roughly at the low end of our guidance range. We believe this was driven by a combination of factors that, frankly, were difficult to predict. The macro environment shifted in late February in ways that we think most of our peers would acknowledge.
+
+To be very clear, the underlying business remains strong. We are seeing some elongation of sales cycles in certain enterprise segments, but we believe this is a timing issue, not a structural one. Customers are not going away. They are taking, perhaps, a bit longer to make decisions. We expect, depending on macro conditions, that these deals will close in the second half. That said, we are being thoughtful about how we model the rest of the year.
+
+Let me address what I know will be on your minds. Cloud platform growth came in at 38 percent year-over-year, which is below the 47 percent we delivered last quarter. The way to think about this is that we had some very large deals slip out of the quarter. They did not go to competitors. They are still in the pipeline. We feel relatively confident, depending on customer readiness, that the majority of these will close by end of Q2 or Q3.
+
+On Acme Insight, look, we are still in the early innings. We had said we would share more specific numbers this quarter. What I would say is that the product is being adopted, but the monetization curve has been a bit slower than we initially modeled. We are not in a position to break out specific Insight ARR today. We will address that at our investor day in September.
+
+Turning to 2026 guidance. We are adjusting our full-year revenue range to 5.8 billion to 6.1 billion dollars, which represents 18 to 24 percent growth. We think this range is appropriate given the visibility we have today. There is, of course, some risk on both ends depending on how the macro evolves. With that, I'll hand it to Robert.
+
+Robert Anderson - Chief Financial Officer: Thanks, David. Q1 revenue was 1.42 billion, up 19 percent year-over-year. Gross margin was 73 percent, down somewhat from the 76 percent we delivered in Q4. We attribute this primarily to a mix shift, but also to some pricing concessions we made on a handful of strategic renewals. To be clear, this is not a structural change. We expect gross margin to recover to the mid-70s by Q3.
+
+Operating margin came in at 14 percent, below our guidance range. The shortfall was driven by, one, the revenue miss, and two, some elevated marketing spend we made in the quarter that, in hindsight, may not have generated the pipeline we expected. We are reviewing our marketing efficiency closely.
+
+For Q2 2026, we expect revenue between 1.4 and 1.46 billion dollars. The range is somewhat wider than our typical guidance because we want to acknowledge the uncertainty in the deal-closure timing. We are not going to provide specific operating margin guidance for Q2 at this time. We will share more at our investor day. With that, operator, we will take questions.
+
+Operator: Thank you. Our first question comes from Jennifer Walsh of Morgan Stanley.
+
+Jennifer Walsh - Morgan Stanley: Hi. David, can you give us more specificity on which segments saw the sales cycle elongation? Was it concentrated in any vertical?
+
+David Chen - Chief Executive Officer: Jennifer, that is a great question. What we saw was somewhat broad-based, although I would say financial services and certain pockets of retail were probably most affected. I do not want to overstate any single vertical because we are talking about a relatively small number of large deals. The deals we are referring to are still active. We just cannot predict, with certainty, the exact quarter in which they will close.
+
+Operator: Our next question is from Michael Tran of Goldman Sachs.
+
+Michael Tran - Goldman Sachs: Thanks. Following up on Jennifer, can you quantify how many deals slipped and the dollar value?
+
+David Chen - Chief Executive Officer: Michael, that is a fair question. We do not typically break out individual deal slippage publicly. What I will say is that, in aggregate, we are looking at a number that is material but manageable. The pipeline is still strong. I am going to let Robert add color on the financial side.
+
+Robert Anderson - Chief Financial Officer: Yeah, Michael, look, we do not disclose specific deal-level metrics. I think the way to think about it is that we had a normal quarter in most respects, with a handful of timing shifts that, depending on how Q2 plays out, may or may not show up in the second-half numbers.
+
+Operator: Our next question is from Priya Patel of JPMorgan.
+
+Priya Patel - JPMorgan: Thank you. Robert, on the operating margin path to 25 percent by 2028 that you committed to last quarter. Is that still the target?
+
+Robert Anderson - Chief Financial Officer: Priya, that is a great question. Look, we believe the long-term margin opportunity is unchanged. The path may, perhaps, look somewhat different than we initially mapped out, depending on the pace of revenue recovery. We are not, at this time, prepared to reaffirm a specific 2028 number. We will revisit that framework at our investor day in September.
+
+Operator: Our next question is from Tom Becker of Barclays.
+
+Tom Becker - Barclays: Thanks. On Acme Insight, you had previously said you would share specific ARR this quarter. Can we get any disclosure today?
+
+David Chen - Chief Executive Officer: Tom, I appreciate the question. As I mentioned earlier, we are not in a position to break out Insight ARR today. We want, perhaps, another quarter or two of data before we put a specific number out publicly. We will address this at the investor day.
+
+Operator: Our next question is from Lisa Ramirez of Bank of America.
+
+Lisa Ramirez - Bank of America: Thanks. David, last quarter you said you had 3.5x pipeline coverage and described the guidance as conservative. What changed?
+
+David Chen - Chief Executive Officer: Lisa, that is a great question and a fair one. Look, our pipeline coverage going into Q1 was, in fact, what we said it was. What changed was the conversion rate. We had assumed conversion rates somewhere in line with historical averages, and the actual conversion came in below that. We believe this is, again, a timing issue. I am not going to speculate on whether conversion rates return to historical norms in Q2. We will see.
+
+Operator: Our final question is from Tom Becker again, a follow-up.
+
+Tom Becker - Barclays: Just one more. David, do you still feel confident in the long-term growth algorithm?
+
+David Chen - Chief Executive Officer: Tom, absolutely. The underlying drivers have not changed. We believe in the business. I think the team is executing well in a tough environment. That is what I would say.
+
+Operator: That concludes today's call. Thank you all for participating.

@@ -1,0 +1,62 @@
+# Secrets — NEVER commit
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+secrets.toml
+.streamlit/secrets.toml
+
+# Generated data — regenerable from ingest
+data/earnings.db
+data/earnings.db-journal
+data/cache/
+data/transcripts/
+data/analyses/
+
+# Generated outputs
+outputs/digests/*.html
+outputs/digests/*.pdf
+logs/*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+htmlcov/
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Keep these explicitly
+!tests/fixtures/sample_*.txt
+!.streamlit/config.toml
+!docs/screenshots/*.png
